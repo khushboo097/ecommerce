@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link class="navbar-item" to="/">T9Bazaar</router-link>
+      <input id="search" type="text" placeholder="Search Products">
+      <span class="navbar-item-right">
+        <router-link to="/login">Login</router-link>
+        <router-link to="/cart">Cart</router-link>
+      </span>
     </div>
     <router-view/>
   </div>
@@ -18,7 +22,14 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 10px;
+  float: left;
+}
+.navbar-item-right{
+  align-content: flex-end;
+}
+.navbar-item{
+  margin-right: 100px;
 }
 
 #nav a {
@@ -28,5 +39,15 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+.footer{
+  background:#42b983;
+  bottom: 0px;
+}
+#search{
+  padding: 10px;
+  margin:10px;
+  width: 500px;
+  border: 1px solid #42b983;
 }
 </style>
