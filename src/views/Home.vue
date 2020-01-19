@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-      <!-- <footer class="footer">This is footer</footer> -->
-  </div>
+  <main class="home">
+    this is home component...
+  </main>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
-  <main class="cart">
-      this is cart
+  <main class="error">
+      Something went wrong...
   </main>
 </template>
 

@@ -1,18 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link class="navbar-item" to="/">T9Bazaar</router-link>
-      <input id="search" type="text" placeholder="Search Products">
-      <span class="navbar-item-right">
-        <router-link to="/login">Login</router-link>
-        <router-link to="/cart">Cart</router-link>
-      </span>
-    </div>
-    <router-view/>
+    <Navbar />
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
+<script>
+import Navbar from './components/App/Navbar'
+import Footer from './components/App/Footer'
+
+export default {
+  name: 'App',
+  components: {
+    Footer,
+    Navbar
+  }
+}
+</script>
+
 <style>
+body {
+  margin: 0px;
+}
+main {
+  min-height: 80vh;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,33 +34,5 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 10px;
-  float: left;
-}
-.navbar-item-right{
-  align-content: flex-end;
-}
-.navbar-item{
-  margin-right: 100px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-.footer{
-  background:#42b983;
-  bottom: 0px;
-}
-#search{
-  padding: 10px;
-  margin:10px;
-  width: 500px;
-  border: 1px solid #42b983;
-}
 </style>
