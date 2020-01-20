@@ -5,6 +5,7 @@
         <span class="navbar-item-right">
         <router-link to="/login">Login</router-link>
         <router-link to="/cart">Cart</router-link>
+        
         </span>
   </nav>
 </template>
@@ -12,32 +13,8 @@
 <script>
 export default {
     name: 'Navbar',
-    data: function () {
-        return {
-            username: '',
-            password: ''
-        }
-    },
-    methods: {
-        initiateLogin() {
-            const data = {
-                username: this.username,
-                password: this.password
-            }
-
-            this.$store.dispatch('loginUser', {
-                data,
-                success: this.onLoginSuccess,
-                fail: this.onLoginFail
-            })
-        },
-        onLoginSuccess () {
-            this.$router.push({name: 'login'})
-        },
-        onLoginFail () {
-            this.$router.push({name: 'errorPage'});
-        }
-    }
+   
+    
 }
 </script>
 

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import Login from '../views/Login.vue'
+import Profile from '../views/profile.vue'
+import newuser from '../views/Newuser.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,6 +32,23 @@ const routes = [
     name: 'error',
     component: () => import('@/views/Error.vue')
   }
+  ,
+  {
+    path:'/login',
+    name:'Login',
+    component:Login
+  }
+  ,
+  {
+    path:'/profile',
+    name:'profile',
+    component:Profile
+  },
+  {
+    path:'/newuser',
+    name:'new',
+    component:newuser
+  },
 ]
 
 const router = new VueRouter({
