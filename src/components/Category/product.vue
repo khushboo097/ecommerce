@@ -3,7 +3,7 @@
       <h4> the category is {{ $route.params.category }} </h4>
       <ul>
             <li class="productlist" v-for="(product, index) in productList" :key="'productlist'+index">
-                <img  :src="imageLink">
+                <img  :src="product.url">
                 <span class="pname">
                 <p>{{ product.name }} <br>{{product.description}} <br> {{product.price}}
                 </p> 
@@ -21,7 +21,7 @@ export default {
     data:function(){
         return {
             // imageLink: 
-            imageLink: 'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'
+            // imageLink: 'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'
         }
     },
     computed: {

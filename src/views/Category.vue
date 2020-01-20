@@ -30,6 +30,11 @@ export default {
         fetchCategoryDetails(category) {
             
             // Dispatch action to fetch deatils related to one category
+            this.$store.dispatch('search', {
+                data : category
+                // success: this.onLoginSuccess,
+                // fail: this.onLoginFail
+            })
             window.console.log(category)
         }
     },
