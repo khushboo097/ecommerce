@@ -9,12 +9,14 @@
 <script>
 import Navbar from './components/App/Navbar'
 import Footer from './components/App/Footer'
+// import Payment from './components/App/Payment'
 
 export default {
   name: 'App',
   components: {
     Footer,
-    Navbar
+    Navbar,
+    
   }
 }
 </script>

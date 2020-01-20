@@ -5,6 +5,9 @@
         <span class="navbar-item-right">
         <router-link to="/login">Login</router-link>
         <router-link to="/cart">Cart</router-link>
+        <router-link to="/payment">Payment</router-link>
+        <router-link to="/forgot">Forgot</router-link>
+        <router-link to="/product">Product</router-link>
         </span>
   </nav>
 </template>
