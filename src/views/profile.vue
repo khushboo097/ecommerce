@@ -27,7 +27,7 @@
 
     </div> -->
 
-<button type="submit" @click="Profile">SaveProfile</button>
+<button type="submit" @click="Profile">Create Account</button>
 
   </main>
 </template>

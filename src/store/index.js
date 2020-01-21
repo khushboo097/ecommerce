@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -5,9 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userDetails: {
-      status: false
-    },
+    userDetails: {},
     NewuserDetails: [],
     ProfileDetails: []
   },
@@ -20,7 +19,7 @@ export default new Vuex.Store({
       state.NewuserDetails= data
     },
     SET_PROFILE_DETAILS(state, data){
-      state.SET_PROFILE_DETAILS = data
+      state.ProfileDetails = data
     }
     //state.MerchantDetails:
     //{
@@ -39,27 +38,33 @@ export default new Vuex.Store({
   actions: {
     loginUser(context, {data, success, fail}) {
       window.console.log([data, success, fail]);
-      fetch('http://10.177.7.62:8080/user/login', {
-         method: 'POST',
-         body: JSON.stringify(data),
-         headers: {
+      fetch('http://192.168.43.203:8080/user/login', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
           'Content-Type': 'application/json'
         }
-       })
-       .then(res => res.json())
-      .then(res => {
-        context.commit('SET_USER_DETAILS', {
-          ...res,
-          status: true
-        })
-        success && success()
+      })
+        .then(res => res.json())
+        .then(res => {
+          context.commit('SET_USER_DETAILS', {
+            ...res
+          })
+          success && success(res)
        })
        .catch(err => {
+         debugger
          window.console.log(err)
          fail && fail()
        })
 
     },
+    // sendOTP(context,{data}){
+    //   fetch('http://ip:port/get/'+data, {
+    //     method: 'POST',
+    // })
+
+    
     newuser(context,{data,success,fail})
     {
     // window.console.log([data,success,fail]);

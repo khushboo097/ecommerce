@@ -10,12 +10,17 @@
 <br>
   </div>
 <br>
+
+
+
 <button @click="initiateLogin" >Submit</button>
 <br>
+
 
  <button>Login with facebook</button>
  
  <button>Login with Email</button>
+
  <br>
  <router-link to="/newuser"> New user?</router-link>
  <br>
@@ -26,33 +31,43 @@
 </template>
 
 <script>
+/* eslint-disable no-debugger */
 
 export default {
-data: function () {
+  data: function () {
+    
         return {
             userEmail: '',
-            userPassword: ''
+            userPassword: '',
+            status:false,
         }
+        
+        
     },
     methods: {
         initiateLogin() {
-            const data = {
-                userEmail: this.userEmail,
-                userPassword: this.userPassword
-            }
-
-            this.$store.dispatch('loginUser', {
-                data,
-                success: this.onLoginSuccess,
-                fail: this.onLoginFail
-            })
+          const data = {
+              userEmail: this.userEmail,
+              userPassword: this.userPassword
+          }
+          this.$store.dispatch('loginUser', {
+              data,
+              success: this.onLoginSuccess,
+              fail: this.onLoginFail
+          })
+        },
+        onLoginSuccess (res) {
+          if (res.loginStatus) {
+            this.$router.push({name: 'home'})
+          } else {
+            window.console.log('You entered wrong credentials...')
+          }
+          
+        },
+        onLoginFail () {
+          window.console.log('Something went wrong...')
+            // this.$router.push({name: 'error'});
         }
-        // onLoginSuccess () {
-        //     this.$router.push({name: 'login'})
-        // },
-        // onLoginFail () {
-        //     this.$router.push({name: 'errorPage'});
-        // }
     }
    
 }
@@ -86,5 +101,6 @@ img.avatar {
   width: 40%;
   border-radius: 50%;
 }
+
 
 </style>

@@ -1,14 +1,14 @@
 <template>
   <main class="login" >
-      <div class="imgcontainer">
+    <div class="imgcontainer">
     <img src="https://cdn3.iconfinder.com/data/icons/e-commerce-trading/512/Customer-512.png" alt="Avatar" class="avatar">
-  </div>
+    </div>
      <div class="container">
       <label >Email</label><input v-model="username" type="email" >
 <br>
 <label >Password</label><input type="password" v-model="password">
 <br>
-  </div>
+</div>
 <br>
 <button @click="initiateLogin" >Submit</button>
 <br>

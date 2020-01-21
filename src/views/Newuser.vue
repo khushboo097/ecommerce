@@ -4,17 +4,15 @@
     <img src="https://dp5zphk8udxg9.cloudfront.net/wp-content/uploads/2016/09/Verification-e1474861482103.jpg" alt="Avatar" class="avatar">
   </div> 
     <div class="main">
-   <label >Email</label><input v-model="email" type="email" >
-    <br>
-    <label >Password</label><input type="password" v-model="password" >
-    <br>
-    <label >Confirm Password</label><input type="password" v-model="confirmpassword" >
+   <label >Email</label><input v-model="userEmail" type="email" >
      <br>
-    <label ><button > SendOTP</button></label>
+    <label ><button @click="sendOTP"> SendOTP</button></label>
     <br>
-    <input id="partitioned" type="text" maxlength="4" />
+    <input id="partitioned" type="text" maxlength="4" v-model="OTP"/>
+    <!-- <br>-->
+    <button >Verify</button>
     <br>
-    <button @click="Newuser">Create Account</button>
+    <!-- <router-link tag="button">Next</router-link> -->
     </div>
 </main>
 </template>
@@ -24,32 +22,28 @@ export default {
     data:function()
     {
         return {
-    
-            password: '',
-            // confirmpassword:''
+            userEmail: '',
+            OTP:''
         }
     },
 methods:{
-  Newuser() {
-            const data = {
-                username: this.username,
-                password: this.password,
-                confirmpassword:this.confirmpassword
-            }
+    sendOTP() {
+        const data = this.userEmail
+        
+        fetch('http://192.168.43.203:8081/otp/get/' + data, {
+            method: 'GET'
+        })
+            .then(res=> res.json())
+            .then(res=>{
+                window.console.log(res);
+                // if (res.get('otp') === this.OTP)
+                //     this.$router.push('/profile');
+        })
+         
+  }
 
-            this.$store.dispatch('newuser', {
-                data,
-                success: this.onLoginSuccess,
-                fail: this.onLoginFail
-            })
-        },
-        onLoginSuccess () {
-            this.$router.push({name: 'profile'})
-        },
-        onLoginFail () {
-            this.$router.push({name: 'errorPage'});
-        }    
 }
+
 }
 </script>
 
