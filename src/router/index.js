@@ -54,6 +54,31 @@ const routes = [
     path: '*',
     name: 'error',
     component: () => import('@/views/Error.vue')
+  },
+  {
+    path: '/payment',
+    name: 'Payment',
+    component: () => import('@/views/Payment.vue')
+  },
+  {
+    path: '/Forgot',
+    name: 'Forgot',
+    component: () => import('@/views/Forgot.vue')
+  },
+  {
+    path: '/Product',
+    name: 'Product',
+    component: () => import('@/views/Product.vue')
+  },
+  {
+    path: '/Shoppingcart',
+    name: 'Shoppingcart',
+    component: () => import('@/views/Shoppingcart.vue')
+  },
+  {
+    path: '/Review',
+    name: 'Review',
+    component: () => import('@/views/Review.vue')
   }
 ]
 
