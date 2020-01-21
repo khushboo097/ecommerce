@@ -24,22 +24,19 @@
 <script>
 export default {
   data: function () {
-    
-        return {
-            userEmail: '',
-            userPassword: '',
-            status:false,
-        }
-        
-        
-    },
-    methods: {
-        initiateLogin() {
-          const data = {
-              userEmail: this.userEmail,
-              userPassword: this.userPassword
-          }
-          this.$store.dispatch('loginUser', {
+    return {
+      userEmail: '',
+      userPassword: '',
+      status:false,
+    }    
+  },
+  methods: {
+    initiateLogin() {
+      const data = {
+        userEmail: this.userEmail,
+        userPassword: this.userPassword
+      }
+      this.$store.dispatch('loginUser', {
               data,
               success: this.onLoginSuccess,
               fail: this.onLoginFail

@@ -1,49 +1,63 @@
 <template>
-<main >
+<main class="newUser">
    <div class="imgcontainer">
-    <img src="https://dp5zphk8udxg9.cloudfront.net/wp-content/uploads/2016/09/Verification-e1474861482103.jpg" alt="Avatar" class="avatar">
+	<img src="https://dp5zphk8udxg9.cloudfront.net/wp-content/uploads/2016/09/Verification-e1474861482103.jpg" alt="Avatar" class="avatar">
   </div> 
-    <div class="main">
-   <label >Email</label><input v-model="userEmail" type="email" >
-     <br>
-    <label ><button @click="sendOTP"> SendOTP</button></label>
-    <br>
-    <input id="partitioned" type="text" maxlength="4" v-model="OTP"/>
-    <!-- <br>-->
-    <button >Verify</button>
-    <br>
-    <!-- <router-link tag="button">Next</router-link> -->
-    </div>
+	<div class="main">
+		<label >Email</label><input v-model="userEmail" type="email" >
+		<br>
+		<label ><button @click="sendOTP"> SendOTP</button></label>
+		<br>
+		<input id="partitioned" type="text" maxlength="4" v-model="OTP"/>
+		<!-- <br>-->
+		<button >Verify</button>
+		<br>
+		<!-- <router-link tag="button">Next</router-link> -->
+	</div>
 </main>
 </template>
 
 <script>
 export default {
-    data:function()
-    {
-        return {
-            userEmail: '',
-            OTP:''
-        }
-    },
-methods:{
-    sendOTP() {
-        const data = this.userEmail
-        
-        fetch('http://192.168.43.203:8081/otp/get/' + data, {
-            method: 'GET'
-        })
-            .then(res=> res.json())
-            .then(res=>{
-                window.console.log(res);
-                // if (res.get('otp') === this.OTP)
-                //     this.$router.push('/profile');
-        })
-         
-  }
+	data: function() {
+		return {
+			userEmail: '',
+			OTP:''
+		}
+	},
+	methods:{
+		sendOTP() {
+			const data = this.userEmail
+			fetch('http://192.168.43.203:8081/otp/get/' + data, {
+				method: 'GET'
+			})
+				.then(res=> res.json())
+				.then(res=>{
+					window.console.log(res);
+					// if (res.get('otp') === this.OTP)
+					//     this.$router.push('/profile');
+			})
+		},
+		Newuser() {
+			const data = {
+				username: this.username,
+				password: this.password,
+				confirmpassword:this.confirmpassword
+			}
 
-}
-
+			this.$store.dispatch('newuser', {
+				data,
+				success: this.onLoginSuccess,
+				fail: this.onLoginFail
+			})
+		},
+		onLoginSuccess () {
+			this.$router.push({name: 'profile'})
+		},
+		onLoginFail () {
+			this.$router.push({name: 'errorPage'});
+		}    
+	}
 }
 </script>
 
@@ -61,15 +75,15 @@ methods:{
 }
 .main{
 border: 0.5px solid black;
-    padding: 10px;
+	padding: 10px;
   box-shadow: 5px 10px;
   border: 1px solid black;
 }
 main{
-    border: 1px solid black;
-    margin-left: 300px;
-    margin-right: 300px;
-    padding-top: 250px;
+	border: 1px solid black;
+	margin-left: 300px;
+	margin-right: 300px;
+	padding-top: 250px;
 
 }
 

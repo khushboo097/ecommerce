@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import newuser from '../views/Newuser.vue'
+import Newuser from '../views/Newuser.vue'
 import Merchant from '../views/merchant-login.vue'
 import newMerchant from '../views/Newmerchant.vue'
 
@@ -35,6 +35,7 @@ const routes = [
     name: 'login',
     component: () => import('@/views/Login.vue')
   },
+  
   {
     path:'/login',
     name:'Login',
@@ -43,7 +44,7 @@ const routes = [
   {
     path:'/newuser',
     name:'new',
-    component: newuser
+    component: Newuser
   },
   {
     path:'/loginMerchant',
