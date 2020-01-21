@@ -10,22 +10,41 @@ export default new Vuex.Store({
       status: false
     },
     productDetails: [
-        { name: 'iphone6s',description:'this is iphone', price:'12000',category: 'mobile',prod_rating:4.5, url1:'https://i.gadgets360cdn.com/products/large/1552901002_635_redmi_7.jpg' },
-        { name: 'samsung ', description:'this is samsung', price:'18000',category: 'mobile',prod_rating:4.3, url1:'https://i.gadgets360cdn.com/products/large/1552901002_635_redmi_7.jpg'},
-        { name: 'lenovo yoga', description:'this is lenovo', price:'15000',category: 'mobile',prod_rating:4.2 , url1:'https://i.gadgets360cdn.com/products/large/1552901002_635_redmi_7.jpg'}
+    //   {
+    //     "_id": "",
+    //     "merchantAndProductId": "",
+    //     "productId": "",
+    //     "merchantId": "",
+    //     "productName": "iphone",
+    //     "description": "",
+    //     "productRating": '',
+    //     "categoryName": "",
+    //     "price": '',
+    //     "sellingPrice": '',
+    //     "url1": "",
+    //     "url2": "",
+    //     "url3": ""
+    // }
+    ],
+    orderDetails:[
+      { orderid:101,name:'iphone Xr',date:'21 Jul 2019',price:'42,000'}
     ]
   },
   mutations: {
     SET_PRODUCT_DETAILS(state, data) {
-      state.productDetails = {
+      state.productDetails = data
+    },
+    SET_ORDER_DETAILS(state,data){
+      state.orderDetails = {
         ...data
       }
     }
   },
   actions: {
     
-    search(context, {data, success, fail}) {
+    productCategorySearch(context, {data, success, fail}) {
     // eslint-disable-next-line no-debugger
+    debugger
       fetch('http://192.168.43.203:8080/merchantAndProduct/get/'+data, {
         method: 'GET',
         // body: data
@@ -34,7 +53,6 @@ export default new Vuex.Store({
       .then(res => {
         // commit changes related to user
         window.console.log(res)
-        debugger
         context.commit('SET_PRODUCT_DETAILS',res)
         success && success(res)
       })
@@ -42,8 +60,28 @@ export default new Vuex.Store({
         window.console.log(err)
         fail && fail()
       })
-    }
-    // productCategory(context, {data, success, fail}) {
+    },
+    userOrderDetails(context, {data, success, fail}) {
+      // eslint-disable-next-line no-debugger
+      //CHANGE API TO GET USER'S ORDER DETAILS
+        fetch('http://192.168.43.203:8080/merchantAndProduct/get/' + data, {
+          method: 'GET',
+          // body: data
+        })
+        .then(res => res.json())
+        .then(res => {
+          // commit changes related to user
+          window.console.log(res)
+          // debugger
+          context.commit('SET_ORDER_DETAILS',res)
+          success && success(res)
+        })
+        .catch(err => {
+          window.console.log(err)
+          fail && fail()
+        })
+      }
+    // search(context, {data, success, fail}) {
     //     fetch('/api/search', {
     //       method: 'POST',
     //       body: data
@@ -63,8 +101,8 @@ export default new Vuex.Store({
     productList (state) {
       return state.productDetails || []
     },
-    getImageUrl(state){
-      return state.productDetails.url
+    OrderList(state){
+      return state.orderDetails || []
     }
   },
   modules: {

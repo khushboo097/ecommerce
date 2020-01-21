@@ -1,6 +1,6 @@
 <template>
   <main class="category">
-      this is category page... 
+      <!-- this is category page...  -->
       <!-- <h4> the category is {{ $route.params.category }} </h4> -->
       <product/>
   </main>
@@ -9,6 +9,7 @@
 <script>
 
 import product from '@/components/Category/product.vue';
+import { mapActions } from 'vuex';
 export default {
 
 
@@ -27,15 +28,17 @@ export default {
       product
     },
     methods: {
+        ...mapActions([
+            'productCategorySearch'
+        ]),
         fetchCategoryDetails(category) {
             
             // Dispatch action to fetch deatils related to one category
-            this.$store.dispatch('search', {
-                data : category
-                // success: this.onLoginSuccess,
-                // fail: this.onLoginFail
+            this.productCategorySearch ({
+                data: category,
             })
-            window.console.log(category)
+            // window.console.log(category)
+
         }
     },
     created () {
