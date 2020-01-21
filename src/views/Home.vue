@@ -5,8 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import Homebody from '@/components/Home/Homebody'
 
 export default {
@@ -21,7 +19,6 @@ export default {
 .home {
   box-sizing: border-box;
   display: block;
-  /* border: 10px solid black; */
   overflow: hidden;
 }
 </style>

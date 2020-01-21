@@ -3,9 +3,8 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import Profile from '../views/profile.vue'
-import newuser from '../views/Newuser.vue'
-import Merchant from '../views/merchant-login.vue'
+import Newuser from '../views/Newuser.vue'
+// import Merchant from '../views/merchant-login.vue'
 import newMerchant from '../views/Newmerchant.vue'
 
 Vue.use(VueRouter)
@@ -41,22 +40,11 @@ const routes = [
     path:'/login',
     name:'Login',
     component: Login
-  }
-  ,
-  {
-    path:'/profile',
-    name:'profile',
-    component: Profile
   },
   {
     path:'/newuser',
     name:'new',
-    component: newuser
-  },
-  {
-    path:'/loginMerchant',
-    name:'Merchant;ogin',
-    component: Merchant
+    component: Newuser
   },
   {
     path:'/newMerchant',
