@@ -4,9 +4,9 @@
     <img src="https://cdn3.iconfinder.com/data/icons/e-commerce-trading/512/Customer-512.png" alt="Avatar" class="avatar">
   </div>
      <div class="container">
-      <label >Email</label><input v-model="userEmail" type="email" >
+      <label >Email</label><input v-model="username" type="email" >
 <br>
-<label >Password</label><input type="password" v-model="userPassword">
+<label >Password</label><input type="password" v-model="password">
 <br>
   </div>
 <br>
@@ -21,35 +21,38 @@
  <br>
 
  <br>
+   
+  </main>
 </template>
 
 <script>
+
 export default {
 data: function () {
         return {
-            userEmail: '',
-            userPassword: ''
+            username: '',
+            password: ''
         }
     },
     methods: {
         initiateLogin() {
             const data = {
-                userEmail: this.userEmail,
-                userPassword: this.userPassword
+                username: this.username,
+                password: this.password
             }
 
-            this.$store.dispatch('loginUser', {
+            this.$store.dispatch('loginMerchant', {
                 data,
                 success: this.onLoginSuccess,
                 fail: this.onLoginFail
             })
+        },
+        onLoginSuccess () {
+            this.$router.push({name: 'login'})
+        },
+        onLoginFail () {
+            this.$router.push({name: 'errorPage'});
         }
-        // onLoginSuccess () {
-        //     this.$router.push({name: 'login'})
-        // },
-        // onLoginFail () {
-        //     this.$router.push({name: 'errorPage'});
-        // }
     }
    
 }
@@ -83,4 +86,5 @@ img.avatar {
   width: 40%;
   border-radius: 50%;
 }
+
 </style>
