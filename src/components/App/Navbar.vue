@@ -8,6 +8,8 @@
         <router-link to="/payment">Payment</router-link>
         <router-link to="/forgot">Forgot</router-link>
         <router-link to="/product">Product</router-link>
+        <router-link to="/Shoppingcart">Shoppingcart</router-link>
+        <router-link to="/Review">Review</router-link>
         </span>
   </nav>
 </template>

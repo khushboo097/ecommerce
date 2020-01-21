@@ -22,6 +22,7 @@ div{
     padding-bottom: 100px;
     padding-top: 100px;
     border: 2px solid  black;
+   
  
 
 }
@@ -39,6 +40,8 @@ font-weight: normal;
     border: 1px solid blue;
     margin-left: 450px;
     margin-right: 450px;
+    border-radius: 50px;
+
 }
 
 
