@@ -26,13 +26,9 @@
  <br>
 
  <br>
-   
-  </main>
 </template>
 
 <script>
-/* eslint-disable no-debugger */
-
 export default {
   data: function () {
     
@@ -101,6 +97,4 @@ img.avatar {
   width: 40%;
   border-radius: 50%;
 }
-
-
 </style>
