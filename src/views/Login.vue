@@ -21,12 +21,9 @@
  <br>
 
  <br>
-   
-  </main>
 </template>
 
 <script>
-
 export default {
 data: function () {
         return {
@@ -86,5 +83,4 @@ img.avatar {
   width: 40%;
   border-radius: 50%;
 }
-
 </style>

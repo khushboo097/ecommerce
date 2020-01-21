@@ -10,6 +10,7 @@
 import Navbar from './components/App/Navbar'
 import Footer from './components/App/Footer'
 
+
 export default {
   name: 'App',
   components: {
@@ -24,7 +25,7 @@ body {
   margin: 0px;
 }
 main {
-  min-height: 80vh;
+  min-height: 90vh;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

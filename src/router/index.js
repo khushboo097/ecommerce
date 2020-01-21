@@ -27,6 +27,11 @@ const routes = [
     component: () => import('@/views/Cart.vue')
   },
   {
+    path: '/category/:category?',
+    name: 'category',
+    component: () => import('../views/Category.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login.vue')
@@ -59,6 +64,26 @@ const routes = [
     component: newMerchant
   },
   {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/Search.vue')
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: () => import('@/views/Logout.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/Profile.vue')
+  },
+  {
+    path: '/history',
+    name: 'history',
+    component: () => import('@/views/History.vue')
+  },
+  {
     path: '*',
     name: 'error',
     component: () => import('@/views/Error.vue')
@@ -72,3 +97,14 @@ const router = new VueRouter({
 })
 
 export default router
+
+
+// this.$router.push({
+//   name: 'category',
+//   params: {
+//     category: 'books'
+//   },
+//   query: {
+
+//   }
+// })
