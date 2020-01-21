@@ -23,10 +23,10 @@
 export default {
     data:function()
     {
-        return {
-    
+return {
+            email: '',
             password: '',
-            // confirmpassword:''
+            confirmpassword:''
         }
     },
 methods:{
@@ -37,7 +37,7 @@ methods:{
                 confirmpassword:this.confirmpassword
             }
 
-            this.$store.dispatch('newuser', {
+            this.$store.dispatch('newMerchant', {
                 data,
                 success: this.onLoginSuccess,
                 fail: this.onLoginFail
