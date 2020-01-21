@@ -51,7 +51,7 @@ export default new Vuex.Store({
       })
       .then(res => res.json())
       .then(res => {
-        // commit changes related to user
+        // commit changes related to product
         window.console.log(res)
         context.commit('SET_PRODUCT_DETAILS',res)
         success && success(res)
@@ -70,7 +70,6 @@ export default new Vuex.Store({
         })
         .then(res => res.json())
         .then(res => {
-          // commit changes related to user
           window.console.log(res)
           // debugger
           context.commit('SET_ORDER_DETAILS',res)
@@ -104,7 +103,5 @@ export default new Vuex.Store({
     OrderList(state){
       return state.orderDetails || []
     }
-  },
-  modules: {
   }
 })

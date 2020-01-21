@@ -5,15 +5,13 @@
     <button class="search-btn" @click=search>Search</button>
     <span class="navbar-item-right">
         <router-link to="/login" class="login">Login</router-link>
-        <!-- <div class="dropdown">
-            <button class="dropbtn"><img src="@/assests/drop.png"></button>
-            <div class="dropdown-content">
-                <router-linkk to="/profile">View Profile</router-link>
-                -->
-                <!-- <router-link to="/history" @click="userOrderDetails($store.userid)">Order History</router-link> -->
-                <!--<router-linkk to="/logout">Logout</router-link>
-            </div>
-        </div> -->
+            <!-- <div class="dropdown">
+                <button class="dropbtn"><img src="@/assets/drop.png"></button>
+                <div class="dropdown-content">
+                    <router-link to="/profile">View Profile</router-link>
+                    <router-link to="/logout">Logout</router-link>
+                </div>
+            </div>  -->
         <router-link to="/cart" class="cart">Cart</router-link>
     </span>
   </nav>
@@ -104,11 +102,6 @@ export default {
 .login:visited,.cart:visited{
     color: black;
 }
-/* .search-btn{
-    padding: 5px;
-    border-radius: 3px solid orange;
-    background: white;
-} */
 a:visited{
     text-decoration: none;
     color: black;
@@ -116,5 +109,9 @@ a:visited{
 }
 a:hover{
     color:white;
+}
+.dropbtn{
+    height: 20px;
+    width: 20px;
 }
 </style>
