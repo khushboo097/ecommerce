@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Newuser from '../views/Newuser.vue'
+// import Merchant from '../views/merchant-login.vue'
+import newMerchant from '../views/Newmerchant.vue'
 
 Vue.use(VueRouter)
 
@@ -25,10 +30,41 @@ const routes = [
     name: 'login',
     component: () => import('@/views/Login.vue')
   },
+  
   {
-    path: '/cart',
-    name: 'cart',
-    component: () => import('@/views/Cart.vue')
+    path:'/login',
+    name:'Login',
+    component: Login
+  },
+  {
+    path:'/newuser',
+    name:'new',
+    component: Newuser
+  },
+  {
+    path:'/newMerchant',
+    name:'newMerch',
+    component: newMerchant
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/Search.vue')
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: () => import('@/views/Logout.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/Profile.vue')
+  },
+  {
+    path: '/history',
+    name: 'history',
+    component: () => import('@/views/History.vue')
   },
   {
     path: '/search',

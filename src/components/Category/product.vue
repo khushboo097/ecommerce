@@ -28,7 +28,6 @@ export default {
             'productList'
         ])
     },
-
     created() {
         // this.productCategorySearch()
     },
