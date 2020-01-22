@@ -25,24 +25,19 @@
             <td>54000</td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>subtotal</td>
+            <td colspan="4" class="right">Sub Total</td>
             <td>78000</td>
         </tr>
          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>total</td>
+        
+            <td colspan="4" class="right">Total</td>
             <td>78000</td>
         </tr>
         
     </table>
     
     <router-link to="/"><button class="xyz">Continue Shopping</button></router-link>
-    <button>Pay Now</button>
+    <router-link to="/Review"><button>Place Order</button></router-link>
     </div>
 
 
@@ -65,6 +60,26 @@ export default {
 .abcd{
     padding-top: 200px;
     padding-bottom: 200px;
+}
+table,tr,th,td{
+    border:2px solid
+}
+button{
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.right{
+    padding-left: 900px;
 }
 
 

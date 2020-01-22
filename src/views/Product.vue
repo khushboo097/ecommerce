@@ -32,12 +32,7 @@
   <span class="dot" @click="currentSlide(2)"></span> 
   <span class="dot" @click="currentSlide(3)"></span> 
 </div>
-            
-                <!-- <img src="../assets/iphone.png" width="500px" height="500px">
-                <img src="../assets/iphone2.webp" width="500px" height="500px">
-                <img src="../assets/iphone3.jpg" width="500px" height="500px"> -->
-                
-        </div>
+  </div>
         <div class="abcd">
             <h1> {{product.name}}</h1>
             <!-- <h3>In Stock</h3> -->
@@ -246,8 +241,16 @@ img {vertical-align: middle;}
 }
 button{
     font-size: 15px;
+    padding-left: 15px;
+    margin-left: 20px;
+    margin-top: 20px;
     
 }
+.a-native-dropdown{
+    margin-top: 40px;
+    font-size: 15px;
+}
+
 
 /* .abc{
     text-align: left;

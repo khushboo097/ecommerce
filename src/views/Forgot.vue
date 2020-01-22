@@ -38,7 +38,7 @@ font-weight: normal;
 }
 .abc{
     border: 1px solid blue;
-    margin-left: 450px;
+    margin-left: 350px;
     margin-right: 450px;
     border-radius: 50px;
 

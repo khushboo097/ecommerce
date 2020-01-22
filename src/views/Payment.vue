@@ -2,12 +2,14 @@
 
     <div class="abc">
         <h1> Yours order has been placed!</h1>
-        <router-link to="/"><button> Go To Home</button></router-link>
+        <router-link to="/"><button> Continue Shopping</button></router-link>
 
     </div>
 </template>
 <script>
+
 export default {
+    
     
 }
 
@@ -30,6 +32,15 @@ h1{
 }
 button{
     font-size: 25px;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
     
 }
 

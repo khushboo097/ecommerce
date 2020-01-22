@@ -9,7 +9,7 @@
           Apps above 150MB can be downloaded unoday I decided to download the App. But I couldnot. I got a message "This item is over 150MB".<br> 
           So I searched on google and found If you turnoff the automatic time zone we can download the facebook.</p>
        
-         <router-link to="/Payment"><button>Pay Now</button></router-link>
+         <router-link to="/Review"><button>Pay Now</button></router-link>
      </div>
     
 </template>
@@ -26,7 +26,7 @@ textarea{
     margin-right: 550px;
 } 
 button{
-     background-color: #4CAF50;
+     background-color: orange;
   border: none;
   color: white;
   padding: 15px 32px;
