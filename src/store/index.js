@@ -7,17 +7,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state:{
     productDetails: [
-      {productName:'iphone',price:'45000',url1:'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'}
+      // {productName:'iphone',price:'45000',url1:'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'}
+      {
+      }
     ],
     orderDetails:[
       { orderid:101,name:'iphone Xr',date:'21 Jul 2019',price:'42,000'}
     ],
-    productById: {
-      name: 'iphone6s',description:'this is iphone', price:'12000',category: 'mobile',prod_rating:4.5, url:'https://i.gadgets360cdn.com/products/large/1552901002_635_redmi_7.jpg' 
+    productById: {  
     },
     userDetails: {},
     NewuserDetails: [],
-    profileDetails: []
+    profileDetails: [],
+    search:[]
   },
   mutations: {
     SET_PRODUCT_DETAILS(state, data) {
@@ -34,11 +36,17 @@ export default new Vuex.Store({
     },
     SET_ORDER_DETAILS(state, data) {
       state.orderDetails = data
+    },
+    SET_SPECIFIC_PRODUCT(state,data){
+      state.productById = data
+    },
+    SET_SEARCH(state,data){
+      state.search = data
     }
   },
   actions: {
     productCategorySearch(context, {data, success, fail}) {
-      fetch('http://192.168.43.203:8080/merchantAndProduct/get/'+data, {
+      fetch('http://10.177.69.98:8082/merchantAndProduct/get/'+data, {
         method: 'GET',
       })
       .then(res => res.json())
@@ -52,9 +60,15 @@ export default new Vuex.Store({
         fail && fail()
       })
     },
+    // productSearch(context,{data,success,fail}){
+      
+    //   fetch(''+data,{
+    //     method:'GET'
+    //   })
+    // },
     loginUser(context, { data, success, fail }) {
       window.console.log([data, success, fail]);
-      fetch('http://10.177.7.28:8080/user/login', {
+      fetch('http://10.177.69.98:8080/user/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -71,12 +85,37 @@ export default new Vuex.Store({
         })
         .catch(err => {
           window.console.log(err)
+          alert('You entered wrong credentials')
+          fail && fail()
+        })
+
+    },
+    search(context, { data, success, fail }) {
+      window.console.log([data, success, fail]);
+      fetch('http://10.177.69.98:8080/search/byName/', {
+        method: 'GET',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+          window.console.log(res)
+          context.commit('SET_USER_DETAILS', {
+            ...res
+          })
+          success && success(res)
+        })
+        .catch(err => {
+          window.console.log(err)
+          alert('You entered wrong credentials')
           fail && fail()
         })
 
     },
     profile(context, { data, success, fail }) {
-      fetch('http://10.177.7.28:8080/user/add', {
+      fetch('http://10.177.69.98:8080/user/add', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -121,7 +160,7 @@ export default new Vuex.Store({
     },
     userOrderDetails(context, {data, success, fail}) {
       //CHANGE API TO GET USER'S ORDER DETAILS
-      fetch('http://192.168.43.203:8080/merchantAndProduct/get/' + data, {
+      fetch('http://10.177.69.98:8082/merchantAndProduct/get/' + data, {
         method: 'GET',
       })
       .then(res => res.json())
@@ -135,21 +174,35 @@ export default new Vuex.Store({
         fail && fail()
       })
   },
-  search(context, {data, success, fail}) {
-      fetch('/api/search', {
-        method: 'POST',
-        body: data
-      })
-      .then(res => res.json())
-      .then(res => {
+  // search(context, {data, success, fail}) {
+  //     fetch('/api/search', {
+  //       method: 'POST',
+  //       body: data
+  //     })
+  //     .then(res => res.json())
+  //     .then(res => {
         
-        success && success(res)
-      })
-      .catch(err => {
-        window.console.log(err)
-        fail && fail()
-      })
-  }
+  //       success && success(res)
+  //     })
+  //     .catch(err => {
+  //       window.console.log(err)
+  //       fail && fail()
+  //     })
+  // },
+  productSearch(context, { data }){
+    
+    fetch('http://10.177.69.98:8082/merchantAndProduct/get/product',{
+      method:'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+      context.commit('SET_SPECIFIC_PRODUCT',res)
+    })
+    }
   },
   getters: {
     productList (state) {
@@ -166,6 +219,9 @@ export default new Vuex.Store({
     },
     loginCheck(state) {
       return state.userDetails.status
+    },
+    getProductById(state){
+      return state.productById
     }
   },
 })

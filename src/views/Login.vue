@@ -46,15 +46,17 @@ export default {
         },
         onLoginSuccess (res) {
           if (res.loginStatus) {
+            this.$store.status  = true
             this.$router.push({name: 'home'})
           } else {
+            this.$router.push('/error')
             window.console.log('You entered wrong credentials...')
           }
           
         },
         onLoginFail () {
           window.console.log('Something went wrong...')
-            // this.$router.push({name: 'error'});
+            this.$router.push('/error');
         }
     }
    

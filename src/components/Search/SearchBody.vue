@@ -2,7 +2,7 @@
     <div class="searchbody">
          <ul>
             <li class="productlist" v-for="(product, index) in productList" :key="'productlist'+index">
-                <img  :src="product.url"><span class="pname">{{ product.name }} </span>
+                <img  :src="product.url1"><span class="pname">{{ product.name }} </span>
             </li>
         </ul>
     </div>

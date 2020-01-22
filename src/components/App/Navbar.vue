@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <router-link class="navbar-item" to="/">T9Bazaar</router-link>
+    <router-link class="navbar-item" to="/">T9Cart</router-link>
     <input id="search" v-model="searchinput" type="text" placeholder="Search Products" class="search" required>
     <button class="search-btn" @click=search>Search</button>
     <span class="navbar-item-right">
@@ -14,18 +14,6 @@
             </div>  -->
         <router-link to="/Shoppingcart" class="cart">Cart</router-link>
     </span>
-    <!--FROM DEV/DINESH -->
-    <!-- <input id="search" type="text" placeholder="Search Products" class="search">
-        <span class="navbar-item-right">
-        <router-link to="/login">Login</router-link>
-        <router-link to="/cart">Cart</router-link>
-        <router-link to="/payment">Payment</router-link>
-        <router-link to="/forgot">Forgot</router-link>
-        <router-link to="/product">Product</router-link>
-        <router-link to="/Shoppingcart">Shoppingcart</router-link>
-        <router-link to="/Review">Review</router-link>
-        </span> -->
-    <!-- -->
   </nav>
 </template>
 
@@ -39,8 +27,6 @@ export default {
     },
     methods: {
         search: function(){
-            // window.console.log(this.searchinput);
-
             if (this.$route.query.key != this.searchinput) {
                 this.$router.push({
                     name: 'search',
@@ -51,12 +37,6 @@ export default {
             } else {
                 return
             }
-
-            // this.$store.dispatch('search', {
-            //     search : this.searchinput,
-            //     success: this.onLoginSuccess,
-            //     fail: this.onLoginFail
-            // })
         }
     },
     computed: {

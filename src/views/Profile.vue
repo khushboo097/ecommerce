@@ -1,20 +1,23 @@
 <template>
   <main>
-    <div class="imgcontainer">
-    <img src="https://atendesigngroup.com/sites/default/files/styles/very_large/public/address-field.png?itok=XSv0R_Ua" alt="Avatar" class="avatar">
-  </div>
-      <label>Email</label><input type="email" v-model="userEmail">
-      <br>
-      Name<input type="text" v-model="userName"> 
-      <br>
-      Password<input type="password" v-model="userPassword">
-      <br>
-      ConfirmPassword<input type="password">
-      <br>
-      Address<input type="text" v-model="userAddress">
-      <br>
-      <label>Enter image Url</label>
-      <input type="text" v-model="userImgUrl">
+     <div class="container">
+      <div class="imgcontainer">
+      <img src="https://cdn0.iconfinder.com/data/icons/food-online/512/membership-register-customer-user-card-512.png" alt="Avatar" class="avatar">
+    </div>
+        <label>Email</label><input type="email" v-model="userEmail">
+        <br>
+        <label>Name</label><input type="text" v-model="userName"> 
+        <br>
+        <label>Password</label><input type="password" v-model="userPassword">
+        <br>
+        <label>ConfirmPassword</label><input type="password">
+        <br>
+        <label>Address</label><input type="text" v-model="userAddress">
+        <br>
+        <label>Enter image Url</label>
+        <input type="text" v-model="userImgUrl">
+        <button type="submit" @click="Profile">Create Account</button>
+      </div>
 <br>
 
 <!-- <div v-if='!image'>
@@ -27,7 +30,7 @@
 
     </div> -->
 
-<button type="submit" @click="Profile">Create Account</button>
+
 
   </main>
 </template>
@@ -127,5 +130,25 @@ input[type=email], input[type=password],input[type=text]{
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+
+}
+img{
+  height: 350px;
+  width:400px;
+}
+.container
+{
+  border: 4px solid black;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+  height: 60%;
+}
+label{
+  margin-right: 5px;
+}
+button{
+  background: green;
+  color:white;
 }
 </style>

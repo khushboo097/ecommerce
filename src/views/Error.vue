@@ -1,15 +1,18 @@
 <template>
   <main class="error">
+
       Something went wrong...
   </main>
 </template>
 
 <script>
 export default {
-name:'errorPage'
+name:'error'
 }
 </script>
 
-<style>
-
+<style scoped>
+.error{
+  top:100px;
+}
 </style>

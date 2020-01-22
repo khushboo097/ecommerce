@@ -42,7 +42,7 @@
     </table>
     
     <router-link to="/"><button class="xyz">Continue Shopping</button></router-link>
-    <button>Pay Now</button>
+    <router-link to="/payment"><button>Pay Now</button></router-link>
     </div>
 
 
@@ -66,7 +66,15 @@ export default {
     padding-top: 200px;
     padding-bottom: 200px;
 }
-
+td{
+    border: 1px solid black;
+}
+button{
+    background: green;
+    color: white;
+    padding: 5px;
+    margin:5px;
+}
 
  
 </style>

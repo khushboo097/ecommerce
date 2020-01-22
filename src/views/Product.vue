@@ -5,19 +5,19 @@
 
                 <div class="mySlides fade">
                 <div class="numbertext">1 / 3</div>
-                <img src="../assets/iphone.png" width="500px" height="500px">
+                <img :src="getProductById.url1" width="500px" height="500px">
                 <!-- <div class="text">Caption Text</div> -->
                 </div>
 
                 <div class="mySlides fade">
                 <div class="numbertext">2 / 3</div>
-                <img src="https://images.idgesg.net/images/article/2018/04/iphone-8-project-red-100754506-large.jpg" width="500px" height="500px">
+                <img :src="getProductById.url2" width="500px" height="500px">
                 <!-- <div class="text">Caption Two</div> -->
                 </div>
 
                 <div class="mySlides fade">
                 <div class="numbertext">3 / 3</div>
-                <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fdavidphelan%2Ffiles%2F2018%2F04%2FiPhone8-iPhone8PLUS-PRODUCT-RED_front-back_041018-1200x1440.jpg" width="500px" height="500px">
+                <img :src="getProductById.url3" width="500px" height="500px">
                 <br>
                 <!-- <div class="text">Caption Three</div> -->
                 </div>
@@ -35,15 +35,15 @@
 </div>
 </div>
         <div class="abcd">
-            <h1> {{product.name}}</h1>
+            <h1> {{getProductById.name}}</h1>
             <!-- <h3>In Stock</h3> -->
             <span>
                 <h2 style="display:inline;">Price: </h2>
-                <h2 style="display:inline;">{{product.price}}</h2>
+                <h2 style="display:inline;">{{getProductById.price}}</h2>
             </span>
             <h3>Description:</h3>
             <dl>
-                <dt>{{product.description}}</dt>
+                <dt>{{getProductById.description}}</dt>
             </dl>
             <select @change="changeMerchant($event)">
                 <option >Select Merchant</option>
@@ -66,7 +66,7 @@
 </template>
 <script>
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'product',
@@ -97,12 +97,24 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'product'
-        ])
+            'product',
+            'getProductById'
+        ]),
+        ...mapActions([
+            'productSearch'
+        ]),
+        productId () {
+            return this.$store.productById
+        }
     },
     mounted () {
         window.console.log(this.slideIndex)
         this.showSlides(this.slideIndex)
+        var payload = JSON.parse(localStorage.getItem('payload'));
+        this.$store.dispatch('productSearch',{
+					data: payload
+				})
+
     },
     methods: {
         changeMerchant(event) {
@@ -116,23 +128,31 @@ export default {
             this.showSlides(this.slideIndex = n)
         },
         showSlides(n) {
-        var i = 0
-        var slides = document.getElementsByClassName("mySlides")
-        window.console.log('slides', slides.length)
-        var dots = document.getElementsByClassName("dot")
-        if (n > slides.length) {this.slideIndex = 1}    
-        if (n < 1) {this.slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            window.console.log('slide loop')
-            slides[i].style.display = "none" 
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "")
-        }
-        slides[this.slideIndex-1].style.display = "block" 
-        dots[this.slideIndex-1].className += " active"
+            var i = 0
+            var slides = document.getElementsByClassName("mySlides")
+            window.console.log('slides', slides.length)
+            var dots = document.getElementsByClassName("dot")
+            if (n > slides.length) {this.slideIndex = 1}    
+            if (n < 1) {this.slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                window.console.log('slide loop')
+                slides[i].style.display = "none" 
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "")
+            }
+            slides[this.slideIndex-1].style.display = "block" 
+            dots[this.slideIndex-1].className += " active"
         }
     }
+    // created () {
+    //     this.fetchProductDetails(this.productdata)
+    // },
+    // watch: {
+    //     productId: function () {
+    //         this.fetchProductDetails(this.productdata)
+    //     }
+    // }
 }
 
 </script>
@@ -170,6 +190,14 @@ img {vertical-align: middle;}
   right: 0;
   border-radius: 3px 0 0 3px;
 }
+button{
+    margin-left:10px;
+    background: green;
+    color: white;
+}
+/* button:hover{
+
+} */
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {

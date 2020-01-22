@@ -10,7 +10,7 @@
                 </div>
                 <div class="description">
                     <router-link tag="button" :to="{name: 'category',params: {
-                        category: 'clothes'}}">View Mobiles
+                        category: 'mobile'}}">View Mobiles
                     </router-link>
                 </div>
             </div>

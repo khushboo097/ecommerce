@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
 import Newuser from '../views/Newuser.vue'
 // import Merchant from '../views/merchant-login.vue'
 import newMerchant from '../views/Newmerchant.vue'
@@ -29,12 +28,6 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login.vue')
-  },
-  
-  {
-    path:'/login',
-    name:'Login',
-    component: Login
   },
   {
     path:'/newuser',
@@ -87,7 +80,7 @@ const routes = [
     component: () => import('@/views/History.vue')
   },
   {
-    path: '*',
+    path: '/error',
     name: 'error',
     component: () => import('@/views/Error.vue')
   },

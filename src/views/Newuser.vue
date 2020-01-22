@@ -31,7 +31,7 @@ export default {
   data: function() {
     return {
       userEmail: "",
-			OTP: "",
+			OTP: '',
 			userOtp:''
     };
   },
@@ -42,7 +42,7 @@ export default {
 			}
 			// eslint-disable-next-line no-console
 			console.log(JSON.stringify(data))
-      fetch('http://10.177.7.28:8081/otp/get', {
+      fetch('http://10.177.69.98:8081/otp/get', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -56,7 +56,7 @@ export default {
         });
 		},
 		verify() {
-			if (this.userOtp === this.OTP) this.$router.push("/profile");
+			if (this.userOtp!=''&& (this.userOtp === this.OTP)) this.$router.push("/profile");
 			else{
 				this.$router.push({name:'error'})
 			}
@@ -78,7 +78,7 @@ export default {
       this.$router.push({ name: "profile" });
     },
     onLoginFail() {
-      this.$router.push({ name: "errorPage" });
+      this.$router.push({ name: "error" });
     }
   }
 };
@@ -108,10 +108,12 @@ export default {
 }
 input {
   width: 100%;
+  height: 30px;
 }
 button {
   background-color: green;
   width: 100%;
+  height:30px;
 }
 img {
   height: 300px;
