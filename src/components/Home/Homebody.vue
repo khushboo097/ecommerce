@@ -85,12 +85,12 @@
 
 <style scoped>
 
-/* .homebody{
+.homebody{
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
     margin: 0px auto;
-} */
+}
 .cards{
     width:31.5%;
     float: left;

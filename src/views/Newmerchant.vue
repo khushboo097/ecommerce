@@ -53,7 +53,7 @@ methods:{
 }
 </script>
 
-<style>
+<style scoped>
 #partitioned {
   padding-left: 15px;
   letter-spacing: 42px;

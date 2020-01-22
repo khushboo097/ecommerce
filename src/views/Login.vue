@@ -1,14 +1,15 @@
 <template>
   <main class="login" >
+     <div class="container">
     <div class="imgcontainer">
       <img src="https://cdn3.iconfinder.com/data/icons/e-commerce-trading/512/Customer-512.png" alt="Avatar" class="avatar">
     </div>
-    <div class="container">
+   
       <label >Email</label><input v-model="userEmail" type="email" >
       <br>
       <label >Password</label><input type="password" v-model="userPassword">
       <br>
-    </div>
+   
     <br>
     <button @click="initiateLogin" >Submit</button>
     <br>
@@ -18,6 +19,7 @@
     <router-link to="/newuser"> New user?</router-link>
     <br>
     <br>
+     </div>
   </main>
 </template>
 
@@ -27,7 +29,7 @@ export default {
     return {
       userEmail: '',
       userPassword: '',
-      status:false,
+    
     }    
   },
   methods: {
@@ -60,8 +62,17 @@ export default {
 
 </script>
  
-<style >
+<style  scoped>
+.container{
+  border: 4px solid black;
+  width: 50%;
+margin-left: 25%;
+margin-top: 10%;
 
+  
+  
+ 
+}
 input[type=email], input[type=password] {
   width: 100%;
   padding: 12px 20px;
@@ -84,7 +95,7 @@ button {
   margin: 24px 0 12px 0;
 }
 img.avatar {
-  width: 40%;
+  width: 20%;
   border-radius: 50%;
 }
 </style>

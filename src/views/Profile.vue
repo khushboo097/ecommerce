@@ -58,16 +58,19 @@ methods: {
 
             this.$store.dispatch('profile', {
                 data,
-                success: this.onLoginSuccess,
-                fail: this.onLoginFail
+                success: this.onAddSuccess,
+                fail: this.onAddFail
             })
-        }
-        // onLoginSuccess () {
-        //     this.$router.push({name: 'profile'})
-        // },
-        // onLoginFail () {
-        //     this.$router.push({name: 'errorPage'});
-        // }    
+        },
+        onAddSuccess (res) {
+            if(res.status == true)
+            this.$router.push({name: 'home'})
+            else
+            this.$router.push({name: 'error'})
+        },
+        onAddFail () {
+            this.$router.push({name: 'error'});
+        }    
 }
 
 
@@ -116,7 +119,7 @@ methods: {
 
 </script>
 
-<style>
+<style scoped>
 input[type=email], input[type=password],input[type=text]{
   width: 100%;
   padding: 12px 20px;
