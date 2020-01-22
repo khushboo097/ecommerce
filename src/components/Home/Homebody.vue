@@ -3,7 +3,7 @@
         <div class="homebody">
             <div class="cards">
                 <div class="images">
-                    <img src="@/assets/dog.jpg">
+                    <img src="https://i.gadgets360cdn.com/products/large/1544013796_635_nokia_8_1.jpg">
                 </div>
                 <div class="title">
                     <h2>Mobiles</h2>
@@ -16,7 +16,7 @@
             </div>
             <div class="cards">
                 <div class="images">
-                    <img src="@/assets/dog.jpg">
+                    <img src="https://images.idgesg.net/images/article/2019/07/aspire5slim-100806682-large.jpg">
                 </div>
                 <div class="title">
                     <h2>Laptops</h2>
@@ -29,7 +29,7 @@
             </div>
             <div class="cards">
                 <div class="images">
-                    <img src="@/assets/dog.jpg">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61hMebwwIsL._UL1200_.jpg">
                 </div>
                 <div class="title">
                     <h2>Watches</h2>
@@ -42,7 +42,7 @@
             </div>
             <div class="cards">
                 <div class="images">
-                    <img src="@/assets/dog.jpg">
+                    <img src="https://cdn7.dissolve.com/p/D23_25_489/D23_25_489_1200.jpg">
                 </div>
                 <div class="title">
                     <h2>Apparel</h2>
@@ -55,7 +55,7 @@
             </div>
             <div class="cards">
                 <div class="images">
-                    <img src="@/assets/dog.jpg">
+                    <img src="https://miro.medium.com/max/1200/1*Gql-Vlc4BQJz_x8GhJXX2A.jpeg">
                 </div>
                 <div class="title">
                     <h2>Books</h2>
@@ -68,7 +68,7 @@
             </div>
             <div class="cards">
                 <div class="images">
-                    <img src="@/assets/dog.jpg">
+                    <img src="https://cdn.vox-cdn.com/thumbor/m1EbpsARCTue95rGv8QUQxEbOeI=/0x0:970x693/1200x800/filters:focal(408x269:562x423)/cdn.vox-cdn.com/uploads/chorus_image/image/63703718/adidas-instagram.0.1467742174.0.jpg">
                 </div>
                 <div class="title">
                     <h2>Shoes</h2>
@@ -85,12 +85,6 @@
 
 <style scoped>
 
-/* .homebody{
-    display: flex;
-    justify-content: space-around;
-    flex-flow: row wrap;
-    margin: 0px auto;
-} */
 .cards{
     width:31.5%;
     float: left;
@@ -101,6 +95,7 @@
 }
 .cards img{
     width: 100%;
+    height: 300px;
 }
 .title{
     text-align: center;

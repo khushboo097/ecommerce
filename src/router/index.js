@@ -66,8 +66,8 @@ const routes = [
     component: () => import('@/views/Forgot.vue')
   },
   {
-    path: '/Product',
-    name: 'Product',
+    path: '/productdescription',
+    name: 'productdescription',
     component: () => import('@/views/Product.vue')
   },
   {

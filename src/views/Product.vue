@@ -1,27 +1,28 @@
 <template>
-    <div class="abc" >
+    <main class="abc" >
         <div class="xyz">
             <div class="slideshow-container">
 
                 <div class="mySlides fade">
                 <div class="numbertext">1 / 3</div>
                 <img src="../assets/iphone.png" width="500px" height="500px">
-                <div class="text">Caption Text</div>
+                <!-- <div class="text">Caption Text</div> -->
                 </div>
 
                 <div class="mySlides fade">
                 <div class="numbertext">2 / 3</div>
-                <img src="../assets/iphone2.webp" width="500px" height="500px">
-                <div class="text">Caption Two</div>
+                <img src="https://images.idgesg.net/images/article/2018/04/iphone-8-project-red-100754506-large.jpg" width="500px" height="500px">
+                <!-- <div class="text">Caption Two</div> -->
                 </div>
 
                 <div class="mySlides fade">
                 <div class="numbertext">3 / 3</div>
-                <img src="../assets/iphone3.jpg" width="500px" height="500px">
-                <div class="text">Caption Three</div>
+                <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fdavidphelan%2Ffiles%2F2018%2F04%2FiPhone8-iPhone8PLUS-PRODUCT-RED_front-back_041018-1200x1440.jpg" width="500px" height="500px">
+                <br>
+                <!-- <div class="text">Caption Three</div> -->
                 </div>
 
-                <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                <!-- <a class="prev" @click="plusSlides(-1)">&#10094;</a> -->
                 <a class="next" @click="plusSlides(1)">&#10095;</a>
 
             </div>
@@ -32,19 +33,17 @@
   <span class="dot" @click="currentSlide(2)"></span> 
   <span class="dot" @click="currentSlide(3)"></span> 
 </div>
-            
-                <!-- <img src="../assets/iphone.png" width="500px" height="500px">
-                <img src="../assets/iphone2.webp" width="500px" height="500px">
-                <img src="../assets/iphone3.jpg" width="500px" height="500px"> -->
-                
-        </div>
+</div>
         <div class="abcd">
             <h1> {{product.name}}</h1>
             <!-- <h3>In Stock</h3> -->
-            <h2>{{product.price}}</h2>
+            <span>
+                <h2 style="display:inline;">Price: </h2>
+                <h2 style="display:inline;">{{product.price}}</h2>
+            </span>
             <h3>Description:</h3>
             <dl>
-                <dd>{{product.description}}</dd>
+                <dt>{{product.description}}</dt>
             </dl>
             <select @change="changeMerchant($event)">
                 <option >Select Merchant</option>
@@ -63,7 +62,7 @@
             <router-link to="/Shoppingcart"><button>Add To Cart</button></router-link>
             <router-link to="/Review"><button>Buy Now</button></router-link>
         </div>
-    </div>   
+    </main>   
 </template>
 <script>
 
@@ -72,30 +71,27 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'product',
     data:function(){
-        return {
-            slideIndex: 1,
-            merchants: [
-                {
-                    id: 1,
-                    name: "merchants-4.2"
-                },
-                {
-                    id: 2,
-                    name: "merchants-4.7"
-                },
-                {
-                    id: 3,
-                    name: "merchants-4.4"
-                },
-                {
-                    id: 4,
-                    name: "merchants-4.6"
-                }
-
-            ],
-           
-
-            // imageLink: 
+    return {
+        slideIndex: 1,
+        // productId :'',
+        merchants: [
+        {
+            id: 1,
+            name: "merchants-4.2"
+        },
+        {
+            id: 2,
+            name: "merchants-4.7"
+        },
+        {
+            id: 3,
+            name: "merchants-4.4"
+        },
+        {
+            id: 4,
+            name: "merchants-4.6"
+        }
+        ],
             imageLink: 'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'
         }
     },
@@ -161,7 +157,7 @@ img {vertical-align: middle;}
   width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
@@ -177,7 +173,7 @@ img {vertical-align: middle;}
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: antiquewhite;
 }
 
 /* Caption text */
@@ -248,72 +244,5 @@ button{
     font-size: 15px;
     
 }
-
-/* .abc{
-    text-align: left;
-}
-.xyz{
-    padding-bottom:20px;
-
-} */
-
-
 </style>
 
-<!--
-
-<template>
-  <main class="products">
-      <h4> the category is {{ $route.params.category }} </h4>
-      <ul>
-            <li class="productlist" v-for="(product, index) in productList" :key="'productlist'+index">
-                <img  :src="imageLink">
-                <span class="pname">
-                <p>{{ product.name }} <br>{{product.description}} <br> {{product.price}}
-                </p> 
-                </span>
-            </li>
-        </ul>
-  </main>
-</template>
-
-<script>
-import { mapGetters } from 'vuex';
-
-export default {
-    name: 'product',
-    data:function(){
-        return {
-            // imageLink: 
-            imageLink: 'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'
-        }
-    },
-    computed: {
-        ...mapGetters([
-            'productList'
-        ])
-    },
-    created() {
-    }
-}
-
-</script>
-
-<style>
-.productlist{
-    border-bottom: 1px solid orange;
-    padding: 10px;
-    list-style-type: none;
-    margin:0;
-    
-}
-/* .pname{
-    border: 1px solid black;
-} */
-img{
-    height: 200px;
-    width:200px;
-}
-
-</style>
--->

@@ -16,24 +16,20 @@ export default {
 </script>
 <style scoped>
 body{
-			background-color: ;
-			background-image: url(background.jpg);
-		}
-		div{
-			
-			margin-right: 500px;
-			margin-left: 500px;
-			margin-bottom: 200%;
-			
-			
-
-		}
-		span{
-			color: white;
-		}
-		button{	
-			       font-size: 20px;
-		      }
+	background-color: #ccc;
+	background-image: url(background.jpg);
+}
+div{			
+margin-right: 500px;
+margin-left: 500px;
+margin-bottom: 200%;	
+}
+span{
+color: white;
+}
+button{	
+font-size: 20px;
+}
 
 
 </style>
