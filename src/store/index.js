@@ -9,8 +9,8 @@ export default new Vuex.Store({
     userDetails: {},
     NewuserDetails: [],
     profileDetails: [],
-    productDetails: [
-    ],
+    productDetails: [],
+    tokenState:{},
     orderDetails: [
       { orderid: 101, name: 'iphone Xr', date: '21 Jul 2019', price: '42,000' }
     ]
@@ -30,24 +30,29 @@ export default new Vuex.Store({
     },
     SET_ORDER_DETAILS(state, data) {
       state.orderDetails = data
-    }
+    },
+    // SET_USER_TOKEN(state,data)
+    // {
+    //   state.tokenState=data
+    // }
+  
   },
   actions: {
     loginUser(context, { data, success, fail }) {
-      window.console.log([data, success, fail]);
-      fetch('http://10.177.7.28:8080/user/login', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(res => res.json())
-        .then(res => {
-          window.console.log(res)
-          context.commit('SET_USER_DETAILS', {
-            ...res
-          })
+    window.console.log([data, success, fail]);
+    fetch('http://10.177.7.28:8080/user/login',{
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+    'Content-Type': 'application/json'
+    }
+    })
+    .then(res => res.json())
+    .then(res => {
+    window.console.log(res)
+    context.commit('SET_USER_DETAILS', {
+    ...res
+    })
           success && success(res)
         })
         .catch(err => {
@@ -99,7 +104,7 @@ export default new Vuex.Store({
           window.console.log(err)
           fail && fail()
         })
-    },
+    },//new end
     productCategorySearch(context, { data, success, fail }) {
       fetch('http://192.168.43.203:8080/merchantAndProduct/get/' + data, {
         method: 'GET',
@@ -114,8 +119,25 @@ export default new Vuex.Store({
           window.console.log(err)
           fail && fail()
         })
-    },
+    },//pr end
+    // mailToken(context, { data, success, fail }) {
+    //   fetch('' + data, {
+    //     method: 'POST',
+    //   })
+    //     .then(res => res.json())
+    //     .then(res => {
+    //       window.console.log(res)
+    //       context.commit('SET_USER_TOKEN', res)
+    //       success && success(res)
+    //     })
+    //     .catch(err => {
+    //       window.console.log(err)
+    //       fail && fail()
+    //     })
+    // }
   },
+ //send end
+
   getters: {
     productList(state) {
       return state.productDetails || []
@@ -126,5 +148,5 @@ export default new Vuex.Store({
     loginCheck(state) {
       return state.userDetails.status
     }
-  }
+  }//getter end
 })

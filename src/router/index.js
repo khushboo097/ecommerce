@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Newuser from '../views/Newuser.vue'
-// import Merchant from '../views/merchant-login.vue'
+
 import newMerchant from '../views/Newmerchant.vue'
 
 Vue.use(VueRouter)
@@ -75,7 +75,8 @@ const routes = [
     path: '*',
     name: 'error',
     component: () => import('@/views/Error.vue')
-  }
+  },
+ 
 ]
 
 const router = new VueRouter({
@@ -87,12 +88,4 @@ const router = new VueRouter({
 export default router
 
 
-// this.$router.push({
-//   name: 'category',
-//   params: {
-//     category: 'books'
-//   },
-//   query: {
 
-//   }
-// })

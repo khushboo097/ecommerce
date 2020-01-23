@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// import FBSignInButton from 'vue-facebook-signin-button'
+// Vue.use(FBSignInButton)
+import GSignInButton from 'vue-google-signin-button'
+Vue.use(GSignInButton)
 
 Vue.config.productionTip = false
 
