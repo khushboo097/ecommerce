@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 <template>
     <main class="abc" >
         <div class="xyz">
@@ -38,8 +39,11 @@
             <h1> {{getProductById.name}}</h1>
             <!-- <h3>In Stock</h3> -->
             <span>
-                <h2 style="display:inline;">Price: </h2>
+                <h2 style="display:inline;">MRP: </h2>
                 <h2 style="display:inline;">{{getProductById.price}}</h2>
+                <br>
+                <h2 style="display:inline;">Discounted Price: </h2>
+                <h2 style="display:inline;">{{getProductById.sellingPrice}}</h2>
             </span>
             <h3>Description:</h3>
             <dl>
@@ -47,8 +51,8 @@
             </dl>
             <select @change="changeMerchant($event)">
                 <option >Select Merchant</option>
-                <option v-for="(merchant, index) in merchants" :key="index" :value="merchant.id">
-                    {{ merchant.name }}
+                <option v-for="(merchant, index) in getMerchantDetails" :key="index" :value="merchant.merchantId">
+                    <label>{{ merchant.merchantName }}</label><label>  {{merchant.merchantRating}}</label>
                 </option>
             </select><br>
             <label for="quantity" class="a-native-dropdown">Quantity:</label>
@@ -59,7 +63,7 @@
                      <option value="3">4</option>
                      <option value="3">5</option>
             </select><br><br>
-            <router-link to="/Shoppingcart"><button>Add To Cart</button></router-link>
+            <button @click="addtoCart">Add To Cart</button>
             <router-link to="/Review"><button>Buy Now</button></router-link>
         </div>
     </main>   
@@ -74,31 +78,14 @@ export default {
     return {
         slideIndex: 1,
         // productId :'',
-        merchants: [
-        {
-            id: 1,
-            name: "merchants-4.2"
-        },
-        {
-            id: 2,
-            name: "merchants-4.7"
-        },
-        {
-            id: 3,
-            name: "merchants-4.4"
-        },
-        {
-            id: 4,
-            name: "merchants-4.6"
-        }
-        ],
-            imageLink: 'https://img2.exportersindia.com/product_images/bc-full/2019/7/4839355/mobiles-1563967697-5014066.jpeg'
+        cartQuantity:''
         }
     },
     computed: {
         ...mapGetters([
             'product',
-            'getProductById'
+            'getProductById',
+            'getMerchantDetails'
         ]),
         ...mapActions([
             'productSearch'
@@ -113,13 +100,35 @@ export default {
         var payload = JSON.parse(localStorage.getItem('payload'));
         this.$store.dispatch('productSearch',{
 					data: payload
-				})
+                })
+        const data ={
+            productId: payload.productId
+        }
+        this.$store.dispatch('merchantDetails',{
+            data :data
+        })
 
     },
     methods: {
         changeMerchant(event) {
+            // let payload = this.getProductById
             window.console.log(event.target.value)
             //action 
+            const data = event.target.value
+            this.$store.dispatch('productDetailsbyMerchant',data)
+        },
+        addtoCart(){
+            // window.console.log(this.getProductById)
+            let data = {
+                merchantAndProductId: '5e2854913981084b308e8b65',
+                userEmail:'a@gmail.com',
+                cartQuantity:6
+            }
+            
+            this.$store.dispatch('addToCart',{
+                data: data
+            })
+            window.console.log('Item added to cart')
         },
         plusSlides(n) {
             this.showSlides(this.slideIndex += n)

@@ -60,26 +60,6 @@ const routes = [
     component: () => import('@/views/History.vue')
   },
   {
-    path: '/search',
-    name: 'search',
-    component: () => import('@/views/Search.vue')
-  },
-  {
-    path: '/logout',
-    name: 'logout',
-    component: () => import('@/views/Logout.vue')
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: () => import('@/views/Profile.vue')
-  },
-  {
-    path: '/history',
-    name: 'history',
-    component: () => import('@/views/History.vue')
-  },
-  {
     path: '/error',
     name: 'error',
     component: () => import('@/views/Error.vue')

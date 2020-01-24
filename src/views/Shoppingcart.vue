@@ -10,46 +10,43 @@
             <th>Quantity</th>
             <th>Total</th>
         </tr>
-        <tr> 
-            <td>1</td>
-            <td>Moblie</td>
-            <td>24000</td>
-            <td>1</td>
-            <td>24000</td>
-        </tr>
-         <tr> 
-            <td>2</td>
-            <td>sofa</td>
-            <td>54000</td>
-            <td>1</td>
-            <td>54000</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>subtotal</td>
-            <td>78000</td>
-        </tr>
-         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>total</td>
-            <td>78000</td>
+        <tr v-for="(order,index) in getCart" :key="index">
+            <td>order.allCartDetailsDTOS.productName<button>Remove</button></td>
+            <td>order.allCartDetailsDTOS.sellingPrice<button>Remove</button></td>
+            <td>order.allCartDetailsDTOS.description<button>Remove</button></td> 
+            <td>order.allCartDetailsDTOS.productRating<button>Remove</button></td>
         </tr>
         
     </table>
     
     <router-link to="/"><button class="xyz">Continue Shopping</button></router-link>
-    <router-link to="/payment"><button>Pay Now</button></router-link>
+    <router-link to="/review"><button>Pay Now</button></router-link>
     </div>
 
 
     
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
+    name:'Shoppingcart',
+    methods:{
+        ...mapGetters(['getCart'])
+    },
+    data: function() {
+    return {
+      userEmail: 'a@gmail.com'
+    };
+  },
+    created(){
+        // var data = JSON.parse(localStorage.getItem('userId'));
+        // let data = {
+        //     userEmail:'a@gmail.com'
+        // }
+        // this.$store.dispatch('fetchCartDetails',{
+        //     data: data
+        // })
+    }
     
 }
 </script>

@@ -46,6 +46,8 @@ export default {
         },
         onLoginSuccess (res) {
           if (res.loginStatus) {
+            const userId = res.uuid;
+            localStorage.setItem('userId', JSON.stringify(userId));
             this.$store.status  = true
             this.$router.push({name: 'home'})
           } else {

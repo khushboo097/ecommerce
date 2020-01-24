@@ -2,7 +2,7 @@
     <div class="abc">
         <div class="xyz">
             <img src="@/assets/giphy.gif" height="150" class="CToWUd a6T" tabindex="0">
-            <h1> Yours order has been placed!</h1>
+            <h1> Your order has been placed!</h1>
         </div>
         <router-link to="/"><button> Continue Shopping</button></router-link>
         <!-- <button><router-link to="/">Go to Home</router-link></button> -->

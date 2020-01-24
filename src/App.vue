@@ -17,6 +17,12 @@ export default {
     Footer,
     Navbar
   }
+  // created(){
+  //   fetch('http://10.177.7.150:8080/user/get',{
+  //     method:'GET',
+
+  //   })
+  // }
 }
 </script>
 
