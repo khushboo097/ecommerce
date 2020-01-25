@@ -1,7 +1,9 @@
 <template>
   <main class="error">
-
-      Something went wrong...
+    <div class="child">
+      Oh no,
+      Something went wrong.
+    </div>
   </main>
 </template>
 
@@ -13,6 +15,13 @@ name:'error'
 
 <style scoped>
 .error{
-  top:100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.child{
+  border: 1px solid darkblue;
+  padding: 5px;
+  font-size: 18px;
 }
 </style>

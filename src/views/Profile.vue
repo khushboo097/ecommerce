@@ -4,8 +4,8 @@
       <div class="imgcontainer">
       <img src="https://cdn0.iconfinder.com/data/icons/food-online/512/membership-register-customer-user-card-512.png" alt="Avatar" class="avatar">
     </div>
-        <label>Email</label><input type="email" v-model="userEmail">
-        <br>
+        <!-- <label>Email</label><input type="email" v-model="userEmail"> -->
+        <!-- <br> -->
         <label>Name</label><input type="text" v-model="userName"> 
         <br>
         <label>Password</label><input type="password" v-model="userPassword">
@@ -40,7 +40,7 @@ export default {
 data:function()
 {
  return {
-   userEmail:'',
+   userEmail: JSON.parse(localStorage.getItem('userEmail')),
    userName:'',
    userAddress:'',
    userImgUrl:'',

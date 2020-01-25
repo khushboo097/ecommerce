@@ -39,10 +39,11 @@ export default {
     sendOTP() {
 			const data = {
 				userEmail: this.userEmail
-			}
+      }
+      localStorage.setItem('userEmail', JSON.stringify(this.userEmail));
 			// eslint-disable-next-line no-console
 			console.log(JSON.stringify(data))
-      fetch('http://10.177.69.98:8081/otp/get', {
+      fetch('/backend/otp/get', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

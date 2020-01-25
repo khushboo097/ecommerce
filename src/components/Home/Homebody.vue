@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div class="homebody">
+        <div class="products">
             <div class="cards">
                 <div class="images">
                     <img src="https://i.gadgets360cdn.com/products/large/1544013796_635_nokia_8_1.jpg">

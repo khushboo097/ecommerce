@@ -16,12 +16,13 @@ export default new Vuex.Store({
     ],
     productById: {  
     },
+    status:false,
     userDetails: {},
     NewuserDetails: [],
     profileDetails: [],
     search:[],
     merchantDetails:[],
-    cartDetails:[]
+    cartDetails:{}
   },
   mutations: {
     SET_PRODUCT_DETAILS(state, data) {
@@ -48,14 +49,15 @@ export default new Vuex.Store({
     SET_MERCHANT_DETAILS(state,data){
       state.merchantDetails = data
     },
-    SET_CART_DETAILS(state,data){
+    SET_CART_DETAILS(state, data){
       state.cartDetails = data
+      window.console.log(state.cartDetails)
     }
   },
   actions: {
     //SEARCH BY PRODUCT CATEGORY
     productCategorySearch(context, {data, success, fail}) {
-      fetch('http://10.177.68.150:8082/merchantAndProduct/get/'+data, {
+      fetch('/backend/merchantAndProduct/get/'+data, {
         method: 'GET',
       })
       .then(res => res.json())
@@ -69,10 +71,25 @@ export default new Vuex.Store({
         fail && fail()
       })
     },
+    productDetailsbyMerchant(context,{data}){
+      fetch('/backend/merchantAndProduct/get/product', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        window.console.log(res)
+        context.commit('SET_MERCHANT_DETAILS',res)
+        // success && success(res)
+      })
+    },
     //USER LOGIN
     loginUser(context, { data, success, fail }) {
       window.console.log([data, success, fail]);
-      fetch('http://10.177.68.150:8080/user/login', {
+      fetch('/backend/user/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -96,9 +113,10 @@ export default new Vuex.Store({
     },
     //SEARCH BY PRODUCT NAME
     search(context, { data, success, fail }) {
-      window.console.log([data, success, fail]);
-      fetch('http://10.177.68.150:8080/search/byName/', {
-        method: 'GET',
+      debugger
+      window.console.log(data);
+      fetch('/backend/search/bySearch', {
+        method: 'POST',
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
@@ -107,21 +125,19 @@ export default new Vuex.Store({
         .then(res => res.json())
         .then(res => {
           window.console.log(res)
-          context.commit('SET_USER_DETAILS', {
-            ...res
-          })
+          context.commit('SET_SEARCH',res)
           success && success(res)
         })
         .catch(err => {
           window.console.log(err)
-          alert('You entered wrong credentials')
+          // alert('You entered wrong credentials')
           fail && fail()
         })
 
     },
     //ADD USER
     profile(context, { data, success, fail }) {
-      fetch('http://10.177.68.150:8080/user/add', {
+      fetch('/backend/user/add', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -168,7 +184,7 @@ export default new Vuex.Store({
     //DETAILS OF USER'S ORDER HERE
     userOrderDetails(context, {data, success, fail}) {
       //CHANGE API TO GET USER'S ORDER DETAILS
-      fetch('http://10.177.68.150:8082/merchantAndProduct/get/' + data, {
+      fetch('/backend/merchantAndProduct/get/' + data, {
         method: 'GET',
       })
       .then(res => res.json())
@@ -185,7 +201,7 @@ export default new Vuex.Store({
   //ALL MERCHANTS FOR SAME PRODUCT
     merchantDetails(context, {data}) {
       //CHANGE API
-      fetch('http://10.177.68.150:8082/merchantAndProduct/display', {
+      fetch('/backend/merchantAndProduct/display', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -196,6 +212,7 @@ export default new Vuex.Store({
       .then(res => {
         window.console.log(res)
         context.commit('SET_MERCHANT_DETAILS',res)
+        // localStorage.setItem('products', JSON.stringify(res));
         // success && success(res)
       })
       // .catch(err => {
@@ -206,7 +223,7 @@ export default new Vuex.Store({
     //GET SPECIFIC PRODUCT DETAILS
   productSearch(context, { data }){
     
-    fetch('http://10.177.68.150:8082/merchantAndProduct/get/product',{
+    fetch('/backend/merchantAndProduct/get/product',{
       method:'POST',
       body: JSON.stringify(data),
       headers: {
@@ -221,7 +238,7 @@ export default new Vuex.Store({
     //FETCH CART
       fetchCartDetails(context, { data }){
     
-      fetch('http://10.177.68.150:8081/cart/get',{
+      fetch('/backend/cart/get',{
         method:'POST',
         body: JSON.stringify(data),
         headers: {
@@ -235,7 +252,7 @@ export default new Vuex.Store({
       },
       addToCart(context,{data}){
         
-        fetch('http://10.177.68.150:8081/cart/add' ,{
+        fetch('/backend/cart/add' ,{
             method: 'PUT',
             body: JSON.stringify(data),
             headers: {
@@ -270,7 +287,15 @@ export default new Vuex.Store({
       return state.productById
     },
     getCart(state){
-      return state.cartDetails
+      window.console.log(state.cartDetails)
+      debugger
+      return state.cartDetails || {}
+    },
+    getSearch(state){
+      return state.search
+    },
+    getStatus(state){
+      return state.status
     }
   },
 })

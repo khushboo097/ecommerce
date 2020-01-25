@@ -51,12 +51,12 @@
             </dl>
             <select @change="changeMerchant($event)">
                 <option >Select Merchant</option>
-                <option v-for="(merchant, index) in getMerchantDetails" :key="index" :value="merchant.merchantId">
+                <option v-for="(merchant, index) in getMerchantDetails" :key="index" :value="merchant.merchantAndProductId">
                     <label>{{ merchant.merchantName }}</label><label>  {{merchant.merchantRating}}</label>
                 </option>
             </select><br>
             <label for="quantity" class="a-native-dropdown">Quantity:</label>
-            <select name="quantity" autocomplete="off" id="quantity" tabindex="0" class="a-native-dropdown">
+            <select v-bind:value="cartQuantity" v-on:change="cartQuantity = $event.target.value" name="quantity" autocomplete="off" id="quantity" tabindex="0" class="a-native-dropdown">
                      <option value="1" selected="">1</option>
                      <option value="2">2</option>
                      <option value="3">3</option>
@@ -113,22 +113,27 @@ export default {
         changeMerchant(event) {
             // let payload = this.getProductById
             window.console.log(event.target.value)
+            window.console.log(this.cartQuantity)
             //action 
-            const data = event.target.value
-            this.$store.dispatch('productDetailsbyMerchant',data)
+            const data ={
+                categoryName: this.product.categoryName,
+                merchantAndProductId : event.target.value,
+                productId: this.product.productId
+            }
+            // const data = event.target.value
+            this.$store.dispatch('productSearch',data)
         },
         addtoCart(){
-            // window.console.log(this.getProductById)
+            var payload = JSON.parse(localStorage.getItem('payload'));
             let data = {
-                merchantAndProductId: '5e2854913981084b308e8b65',
-                userEmail:'a@gmail.com',
-                cartQuantity:6
+                merchantAndProductId: payload.merchantAndProductId,
+                cartQuantity:this.cartQuantity
             }
             
             this.$store.dispatch('addToCart',{
                 data: data
             })
-            window.console.log('Item added to cart')
+            window.console.log(this.cartQuantity)
         },
         plusSlides(n) {
             this.showSlides(this.slideIndex += n)

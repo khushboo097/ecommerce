@@ -1,8 +1,96 @@
 <template>
     <div class="searchbody">
-         <ul>
-            <li class="productlist" v-for="(product, index) in productList" :key="'productlist'+index">
-                <img  :src="product.url1"><span class="pname">{{ product.name }} </span>
+         <ul class="container">
+            <!-- <li class="child" v-for="(product, index) in getSearch" :key="'productlist'+index">
+                <img  :src="product.url1">
+                <div class="product-info">
+                    <label>{{product.productName}}</label><label> {{product.price}}</label>
+                    <label>{{product.productRating}}</label>
+                </div>
+            </li> -->
+            <li class="child">
+                <img src="https://www.91-img.com/pictures/134124-v5-oppo-k3-mobile-phone-large-1.jpg">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="https://www.gizmochina.com/wp-content/uploads/2018/07/Oppo-A3s.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
+            </li>
+            <li class="child">
+                <img src="@/assets/iphone.png">
+                <div class="product-info">
+                    <label>product.productName</label><label> product.price</label>
+                    <label>product.productRating</label>
+                </div>
             </li>
         </ul>
     </div>
@@ -20,16 +108,19 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'productList'
+            'getSearch'
         ])
     },
     created() {
+        // eslint-disable-next-line no-console
+        // eslint-disable-next-line no-debugger
+        window.console.log(this.getSearch)
     }
 }
 </script>
 
 <style scoped>
-.productlist{
+/* .productlist{
     border-bottom: 1px solid orange;
     padding: 10px;
     list-style-type: none;
@@ -38,10 +129,51 @@ export default {
 }
 .pname{
     border: 1px solid black;
+}*/
+.product-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 img{
-    height: 200px;
-    width:200px;
+    height: 210px;
+    width:210px;
+} 
+.container{
+			/* border:1px solid red; */
+			display: flex;
+			flex-wrap: wrap;
+            justify-content:  space-around;
+            
+            
+		}
+		.child{
+			border: 1px solid #1054a1;
+			/*flex-grow: 1;*/
+            display: flex;
+            flex-wrap: wrap;
+			/* align-items: flex-start; */
+            justify-content: flex-start;
+            border: solid 1px #CCC;
+        box-shadow: 1px 1px 5px #999;
+		}
+		li{
+			list-style:none; 
+			margin: 10px;
+			padding: 8px;
+		}
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        .child:hover {
+    border: solid 1px dodgerblue;box-shadow: 1px 1px 15px #093b73;
 }
-
+label{
+    /* border:1px solid blue; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    align-content: flex-start;
+}
 </style>

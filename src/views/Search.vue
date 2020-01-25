@@ -15,31 +15,33 @@ export default {
     }
   },
   computed: {
-      searchTerm() {
-          return this.$route.query
-      }
+    //   inputData() {
+    //       return data{
+    //           inputData: this.searchinput
+    //       }
+    //   }
   },
   components: {
       SearchBody
   },
-  watch: {
-      searchTerm: function () {
-          this.doSearch(this.$route.query)
-      }
-  },
-  methods: {
-      doSearch(key) {
-          window.console.log(key)
-          this.$store.dispatch('search', {
-                search : this.searchinput,
-                success: this.onLoginSuccess,
-                fail: this.onLoginFail
-            })
-      }
-  },
-  created() {
-      this.doSearch(this.searchTerm)
-  }
+//   watch: {
+//       name: function () {
+//           this.doSearch(this.$route.query)
+//       }
+//   },
+//   methods: {
+//       doSearch(key) {
+//           window.console.log(key)
+//           this.$store.dispatch('search', {
+//                 inputData : key,
+//                 success: this.searchSuccess,
+//                 fail: this.failSuccess
+//             })
+//       }
+//   },
+//   created() {
+//       this.doSearch(this.inputData)
+//   }
     
 }
 

@@ -1,8 +1,10 @@
 <template>
   <div id="app">
+    <!-- <button @click="secondRequest">Second Request</button> -->
     <Navbar />
     <router-view></router-view>
     <Footer />
+
   </div>
 </template>
 
@@ -16,13 +18,32 @@ export default {
   components: {
     Footer,
     Navbar
+  },
+  created(){
+    fetch('backend/user/login', {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userEmail: 'a@gmail.com',
+        userPassword: '111'
+      })
+    })
+      .then(res => res.json())
+      .then(res => {
+        window.console.log(res)
+      })
+  },
+  methods: {
+    secondRequest () {
+      fetch('backend/user/getCookies')
+        .then(res => res.json())
+        .then(res => {
+          window.console.log(res)
+        })
+    }
   }
-  // created(){
-  //   fetch('http://10.177.7.150:8080/user/get',{
-  //     method:'GET',
-
-  //   })
-  // }
 }
 </script>
 

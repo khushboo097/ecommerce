@@ -9,18 +9,23 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
+            <th></th>
         </tr>
-        <tr v-for="(order,index) in getCart" :key="index">
-            <td>order.allCartDetailsDTOS.productName<button>Remove</button></td>
-            <td>order.allCartDetailsDTOS.sellingPrice<button>Remove</button></td>
-            <td>order.allCartDetailsDTOS.description<button>Remove</button></td> 
-            <td>order.allCartDetailsDTOS.productRating<button>Remove</button></td>
+        <!-- <t r> -->
+        <tr v-for="(order, index) in getCart.allCartDetailsDTOS" :key="order.cartId">
+            <td>{{index}}</td>
+            <td>{{order.productName}}</td>
+            <td>{{order.sellingPrice}}</td>
+            <td><button @click="decrease" style="width:18px;padding:5px;border-radius:8px;">-</button>{{order.cartQuantity}}<button @click="increase" style="width:18px;padding:5px;border-radius:8px;">+</button></td> 
+            <td>{{order.productRating}}</td>
+            <td></td>
+            <td><button @click="remove">Remove</button></td>
         </tr>
         
     </table>
     
     <router-link to="/"><button class="xyz">Continue Shopping</button></router-link>
-    <router-link to="/review"><button>Pay Now</button></router-link>
+    <router-link to="/review"><button>Place your order</button></router-link>
     </div>
 
 
@@ -30,24 +35,32 @@
 import { mapGetters } from 'vuex';
 export default {
     name:'Shoppingcart',
-    methods:{
+    data: function(){
+        return {
+            cartQuantity:''
+        }
+    },
+    computed: {
         ...mapGetters(['getCart'])
     },
-    data: function() {
-    return {
-      userEmail: 'a@gmail.com'
-    };
-  },
-    created(){
+    methods:{
+        increase(){
+            this.cartQuantity++;
+        },
+        decrease(){
+            if(this.cartQuantity>2)
+                this.cartQuantity--;
+        }
+    },
+    mounted(){
         // var data = JSON.parse(localStorage.getItem('userId'));
-        // let data = {
-        //     userEmail:'a@gmail.com'
-        // }
-        // this.$store.dispatch('fetchCartDetails',{
-        //     data: data
-        // })
+        const data = {
+            userEmail:'a@gmail.com'
+        }
+        this.$store.dispatch('fetchCartDetails',{
+            data: data
+        })
     }
-    
 }
 </script>
 <style scoped>
