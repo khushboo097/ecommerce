@@ -88,6 +88,11 @@ const routes = [
     path: '/Review',
     name: 'Review',
     component: () => import('@/views/Review.vue')
+  },
+  {
+    path:'/account',
+    name:'ViewProfile',
+    component:()=> import('@/views/ViewProfile.vue')
   }
 ]
 

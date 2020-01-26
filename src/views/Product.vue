@@ -1,7 +1,8 @@
 /* eslint-disable no-debugger */
 <template>
     <main class="abc" >
-        <div class="xyz">
+        
+        <div class="container">
             <div class="slideshow-container">
 
                 <div class="mySlides fade">
@@ -26,7 +27,7 @@
                 <!-- <a class="prev" @click="plusSlides(-1)">&#10094;</a> -->
                 <a class="next" @click="plusSlides(1)">&#10095;</a>
 
-            </div>
+        </div>
 <br>
 
 <div style="text-align:center">
@@ -63,7 +64,7 @@
                      <option value="3">4</option>
                      <option value="3">5</option>
             </select><br><br>
-            <button @click="addtoCart">Add To Cart</button>
+            <button @click="addtoCart" >Add To Cart</button>
             <router-link to="/Review"><button>Buy Now</button></router-link>
         </div>
     </main>   
@@ -71,6 +72,8 @@
 <script>
 
 import { mapGetters, mapActions } from 'vuex';
+// import { SweetAlertOptions, SweetAlertResult } from "sweetalert2";
+
 
 export default {
     name: 'product',
@@ -110,22 +113,34 @@ export default {
 
     },
     methods: {
+        secondRequest () {
+            fetch('/backend/user/demo')
+                .then(res => res.json())
+                .then(res => {
+                window.console.log(res)
+            })
+        },
         changeMerchant(event) {
             // let payload = this.getProductById
-            window.console.log(event.target.value)
-            window.console.log(this.cartQuantity)
+            var newpayload = JSON.parse(localStorage.payload);
+            newpayload.merchantAndProductId = event.target.value;
+            localStorage.setItem("payload", JSON.stringify(newpayload));
             //action 
             const data ={
                 categoryName: this.product.categoryName,
                 merchantAndProductId : event.target.value,
                 productId: this.product.productId
+            
             }
+            window.console.log(data)
             // const data = event.target.value
-            this.$store.dispatch('productSearch',data)
+            this.$store.dispatch('productSearch',{
+                data: data})
         },
         addtoCart(){
             var payload = JSON.parse(localStorage.getItem('payload'));
             let data = {
+                userEmail: 'a@gmail.com',
                 merchantAndProductId: payload.merchantAndProductId,
                 cartQuantity:this.cartQuantity
             }
@@ -133,7 +148,7 @@ export default {
             this.$store.dispatch('addToCart',{
                 data: data
             })
-            window.console.log(this.cartQuantity)
+            this.$alert('Your item has been added to cart!',"Success","success")
         },
         plusSlides(n) {
             this.showSlides(this.slideIndex += n)
@@ -182,6 +197,15 @@ img {vertical-align: middle;}
   position: relative;
   margin: auto;
 }
+ .container{
+     /* border:1px solid red; */
+     margin-top:20px;  
+    }
+.abc{
+    /* border:1px solid green; */
+    display: flex;
+    justify-content: center;
+}
 
 /* Next & previous buttons */
 .prev, .next {
@@ -209,6 +233,7 @@ button{
     background: green;
     color: white;
 }
+
 /* button:hover{
 
 } */

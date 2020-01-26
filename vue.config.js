@@ -6,13 +6,16 @@ module.exports = {
       },
       proxy: {
         '^/backend': {
-          target: 'http://10.177.2.82:8080/',
+          target: 'http://10.177.68.16:8080/',
           ws: true,
           changeOrigin: true,
           pathRewrite: {'^/backend' : ''}
         },
-        '^/foo': {
-          target: '<other_url>'
+        '^/backendcart': {
+          target: 'http://10.177.68.16:8081/',
+          ws:true,
+          changeOrigin:true,
+          pathRewrite:{'^/backendcart':''}
         }
       }
     },

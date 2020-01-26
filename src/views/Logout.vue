@@ -6,8 +6,12 @@
 
 <script>
 export default {
-  created(){
-    this.$store.status = false;
+  name:'logout',
+  mounted(){
+    // this.$store.dispatch('logout')
+    
+    // this.$store.dispatch('logout')
+    
   }
 
 }

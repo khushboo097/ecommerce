@@ -1,5 +1,6 @@
 <template>
     <main class="search">
+        
        <SearchBody></SearchBody>
     </main>
 </template>

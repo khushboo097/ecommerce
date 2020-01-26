@@ -9,9 +9,9 @@
             </li> -->
         <ul class="container">
             <li v-for="order in OrderList" :key="order.orderId" class="child">
-                <img  :src="order.url1">
+                <!-- <img  :src="order.url1"> -->
                 <div class="product-info">
-                    <label>{{ order.name }} </label><label>{{order.description}}</label><label>{{order.price}}</label>
+                    <label>{{ order.orderId }} </label><label>{{order.amount}}</label><label>{{order.orderDate}}</label>
                 </div>
             </li>
         </ul>
@@ -35,7 +35,12 @@ export default {
         ])
     },
     created() {
-        this.$store.dispatch('userOrderDetails')
+        const data ={
+            userEmail:'a@gmail.com'
+        }
+        this.$store.dispatch('userOrderDetails',{
+            data:data
+        })
     }
 }
 

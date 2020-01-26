@@ -11,6 +11,8 @@ export default {
   name: 'home',
   components: {
     Homebody
+  },
+  created(){
   }
 }
 </script>

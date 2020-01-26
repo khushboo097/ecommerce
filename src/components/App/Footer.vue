@@ -21,7 +21,7 @@ export default {
     border: 5px solid #383733;
     background: #383733;
     min-height: 8vh;
-    color: orange;
+    color:  dodgerblue;
     justify-content: center;
     height: 150px;
 }

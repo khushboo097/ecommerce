@@ -19,25 +19,24 @@ export default {
     Footer,
     Navbar
   },
-  created(){
-    fetch('backend/user/login', {
-      method:'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        userEmail: 'a@gmail.com',
-        userPassword: '111'
-      })
+  created() {
+    // var cook = this.$cookies.get('newUuid');
+
+    // window.console.log(cook)
+    fetch('backend/user/demo', {
+      method:'GET'
     })
-      .then(res => res.json())
-      .then(res => {
-        window.console.log(res)
-      })
   },
+      // .then(res => res.json())
+      // .then(res => {
+      //   window.console.log(res)
+      // })
+  // },
   methods: {
     secondRequest () {
-      fetch('backend/user/getCookies')
+      fetch('/backend/user/demo1',{
+        method:'POST'
+      })
         .then(res => res.json())
         .then(res => {
           window.console.log(res)

@@ -1,14 +1,14 @@
 <template>
     <div class="searchbody">
          <ul class="container">
-            <!-- <li class="child" v-for="(product, index) in getSearch" :key="'productlist'+index">
+            <li class="child" v-for="(product, index) in getSearch" :key="'productlist'+index">
                 <img  :src="product.url1">
                 <div class="product-info">
                     <label>{{product.productName}}</label><label> {{product.price}}</label>
                     <label>{{product.productRating}}</label>
                 </div>
-            </li> -->
-            <li class="child">
+            </li>
+            <!-- <li class="child">
                 <img src="https://www.91-img.com/pictures/134124-v5-oppo-k3-mobile-phone-large-1.jpg">
                 <div class="product-info">
                     <label>product.productName</label><label> product.price</label>
@@ -91,7 +91,7 @@
                     <label>product.productName</label><label> product.price</label>
                     <label>product.productRating</label>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>

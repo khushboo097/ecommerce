@@ -44,12 +44,15 @@ export default {
               fail: this.onLoginFail
           })
         },
+        
         onLoginSuccess (res) {
+          // eslint-disable-next-line no-debugger
+          debugger
           if (res.loginStatus) {
-            const userId = res.uuid;
-            this.$store.status = res.loginStatus
-            localStorage.setItem('userId', JSON.stringify(userId));
-            this.$store.status  = true
+            // const userEmail = res.userEmail;
+            // this.$store.status = res.loginStatus
+            // localStorage.setItem('userEmail', JSON.stringify(userEmail));
+            localStorage.setItem('status', JSON.stringify(res.loginStatus));
             this.$router.push({name: 'home'})
           } else {
             this.$router.push('/error')
@@ -61,7 +64,21 @@ export default {
           window.console.log('Something went wrong...')
             this.$router.push('/error');
         }
+    },
+    created(){
+    //   window.console.log('geting into created')
+    //   fetch('http://10.177.68.16:8080/user/verify',{
+    //     method:'GET'
+    //   })
+    //   .then(res => res.json())
+    //   .then(result => {
+    //     window.console.log(result.Status)
+    //     // if(result.status==401)
+    //     //     this.$router.push('/error')
+    //     // window.console.log(res)
+    // })
     }
+    
    
 }
 

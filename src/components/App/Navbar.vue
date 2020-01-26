@@ -1,28 +1,18 @@
 <template>
   <nav class="navbar">
     <router-link class="navbar-item" to="/">T9Cart</router-link>
-    <input id="search" v-model="searchinput" type="text" placeholder="Search Products" class="search" required>
-    <button class="search-btn" @click="search">Search</button>
+    <input id="search" v-model="searchinput" type="text" placeholder="Search Products" class="navbar-item search" required>
+    <button class="search-btn navbar-item" @click="search">Search</button>
     <span v-if="getStatus" class="navbar-item-right">
-        <router-link to="/login" class="login">Login</router-link>
-            <div class="dropdown">
-                <button class="dropbtn"><img class="dropbtn" src="@/assets/drop.png"></button>
-                <div class="dropdown-content">
-                    <router-link to="/profile">View Profile</router-link>
-                    <router-link to="/logout">Logout</router-link>
-                </div>
-            </div> 
-        <router-link to="/Shoppingcart" class="cart">Cart</router-link>
+        <router-link to="/account" class="login">My Account</router-link>
+        <router-link to="/history" class="login">Orders</router-link>
+                <!-- <router-link to="/profile navbar-item">View Profile</router-link> -->
+                <router-link to="/Shoppingcart" class="cart">Cart</router-link>
+                <button @click="logout" class="logout"> Logout</button> 
+        
     </span>
     <span v-else class="navbar-item-right">
         <router-link to="/login" class="login">Login</router-link>
-            <!-- <div class="dropdown">
-                <button class="dropbtn"><img src="@/assets/drop.png"></button>
-                <div class="dropdown-content">
-                    <router-link to="/profile">View Profile</router-link>
-                    <router-link to="/logout">Logout</router-link>
-                </div>
-            </div>  -->
         <router-link to="/Shoppingcart" class="cart">Cart</router-link>
     </span>
   </nav>
@@ -70,15 +60,29 @@ export default {
         },
         failSuccess(){
             window.console.log('fail')
-        }
+        },
+        logout(){
+            // eslint-disable-next-line no-debugger
+            debugger
+            fetch('http://10.177.68.16:8080/user/logout',{
+            method:'GET'
+        }).then(res=>res.json())
+        .then(res=> {
+            // eslint-disable-next-line no-debugger
+            debugger
+            window.console.log(res)
+            localStorage.setItem('status',JSON.stringify(false));
+          // this.$router.push('/logout')
+      })
+    }
     }
 }
 </script>
 
 <style scoped>
 .navbar {
-    border: 1px solid orange;
-    background: orange;
+    border: 1px solid dodgerblue;
+    background: dodgerblue;
     height: 8vh;
 }
 
@@ -86,22 +90,22 @@ export default {
   padding: 10px;
   margin:10px;
   width: 500px;
-  border-radius: 3px solid orange;
-  background: white;
-  color: orange;
+  border-radius: 3px solid dodgerblue;
+  background: rgb(251, 248, 248);
+  color:  dodgerblue;
 }
 .search-btn{
-    border-radius: 5px solid orange;
-    color: orange;
+    border-radius: 5px solid dodgerblue;
+    color:  white;
     cursor: pointer;
-    padding: 8px;
+    padding: 7px;
     margin-left: 5px;
     font-size: 12px;
-    font-weight: 800;
-    background: #fff;
+    font-weight: 400;
+    background: #000;
 }
 .search-btn:hover{
-    background: orange;
+    background:  dodgerblue;
     color: white;
 }
 .navbar-item
@@ -133,9 +137,48 @@ a:visited{
 a:hover{
     color:white;
 }
+.login:hover{
+    color:white;
+}
+.cart:hover{
+    color:white;
+}
 .dropbtn{
     height: 20px;
     width: 20px;
     
 }
+.logout{
+    margin-left:30px;
+    padding:8px;
+    border: 1px solid dodgerblue;
+    background: black;
+    font-weight:400;
+    color: white;
+}
+.logout:hover{
+    background:  dodgerblue;
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+}
+.cart{
+    margin-left: 30px;
+}
+
+.login{
+    margin-left:30px;
+}
+/* .navbar{
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+router-link{
+     width: 100%;
+    text-align: center;
+    order: 3;
+    display: none;
+} */
 </style>
